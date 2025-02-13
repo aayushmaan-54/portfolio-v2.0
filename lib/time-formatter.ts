@@ -1,4 +1,4 @@
-const formatDateTime = (date: Date) => {
+export default function formatDateTime (date: Date) {
   const day = date.getDate();
   const month = date.toLocaleString('en-US', { month: 'short' });
   const hours = date.getHours();

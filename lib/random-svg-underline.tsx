@@ -1,6 +1,7 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { RandomSvgUnderlineProps } from '@/types';
+
 
 const RandomSvgUnderline = ({
   strokeWidth = 7,
@@ -12,7 +13,8 @@ const RandomSvgUnderline = ({
   const containerRef = useRef<HTMLSpanElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
 
-  const generateRandomPath = (width: number) => {
+
+  const generateRandomPath = useCallback((width: number) => {
     const moveY = Math.floor(Math.random() * (12 - 5)) + 5;
     
     const controlPoint1X = width * 0.3;
@@ -24,9 +26,10 @@ const RandomSvgUnderline = ({
             C ${controlPoint1X} ${curveY} 
               ${controlPoint2X} ${curveY} 
               ${width - 7} ${endY}`;
-  };
+  }, [minHeight, maxHeight]);
 
-  const updatePath = () => {
+
+  const updatePath = useCallback(() => {
     const container = containerRef.current;
     const path = pathRef.current;
     
@@ -39,7 +42,8 @@ const RandomSvgUnderline = ({
       }
       path.setAttribute('d', generateRandomPath(width));
     }
-  };
+  }, [generateRandomPath]);
+
 
   useEffect(() => {
     updatePath();
@@ -58,7 +62,8 @@ const RandomSvgUnderline = ({
       window.removeEventListener('resize', handleResize);
       clearTimeout(resizeTimer);
     };
-  }, [minHeight, maxHeight]);
+  }, [updatePath]);
+
 
   return (
     <span ref={containerRef} className={`relative inline-block ${className}`}>
@@ -80,5 +85,6 @@ const RandomSvgUnderline = ({
     </span>
   );
 };
+
 
 export default RandomSvgUnderline;

@@ -1,4 +1,4 @@
-export default function() {
+export default function getCurrentYear() {
   const startYear = 2025;
   const currentYear = new Date().getFullYear();
   

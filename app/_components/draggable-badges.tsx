@@ -1,13 +1,29 @@
 "use client";
 import { motion } from "framer-motion";
-import { useRef } from "react";
-import useWindowSize from "@/lib/hooks/use-window-size";
+import { useEffect, useRef, useState } from "react";
+import getCurrentDayPeriod from "@/lib/day-time-emoji";
+import formatDateTime from "@/lib/time-formatter";
+
 
 export default function DraggableBadges() {
-  const windowSize = useWindowSize();
   const badgesContainerRef = useRef<HTMLDivElement>(null);
-  const baseWidth = 1440;
-  const scale = Math.max(windowSize.width / baseWidth, 0.5);
+
+  const [dayPeriod, setDayPeriod] = useState(getCurrentDayPeriod());
+  const [likeCount, setLikeCount] = useState(45);
+  const [currentDateTime, setCurrentDateTime] = useState(formatDateTime(new Date()));
+
+  const likeClickHandler = () => {
+    setLikeCount((prev) => prev + 1);
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDayPeriod(getCurrentDayPeriod());
+      setCurrentDateTime(formatDateTime(new Date()));
+    }, 60000); // 60sec
+
+    return () => clearInterval(interval);
+  }, []);
 
   const dragConfig = {
     drag: true,
@@ -27,26 +43,22 @@ export default function DraggableBadges() {
         {...dragConfig}
         style={{
           position: "absolute",
-          top: 50 * scale,
-          left: 20 * scale,
+          top: 50,
+          left: 20,
           rotate: "15deg",
-          fontSize: `${Math.max(14 * scale, 12)}px`
         }}
         className="badge px-3 py-1 rounded-full shadow-md cursor-grab active:cursor-grabbing"
       >
-        <span>🫀 45</span>
+        <span onClick={likeClickHandler}>🫀 {likeCount}</span>
       </motion.div>
 
       <motion.div
         {...dragConfig}
         style={{
           position: "absolute",
-          top: windowSize.width < 768 ? 120 * scale : 150 * scale,
-          left: windowSize.width < 768 ? 
-            Math.min(280 * scale, windowSize.width - 150) : 
-            380 * scale,
-          rotate: "-12deg",
-          fontSize: `${Math.max(14 * scale, 12)}px`
+          top: 50,
+          left: 20,
+          rotate: "15deg",
         }}
         className="badge px-3 py-1 rounded-full shadow-md cursor-grab active:cursor-grabbing"
       >
@@ -57,30 +69,26 @@ export default function DraggableBadges() {
         {...dragConfig}
         style={{
           position: "absolute",
-          top: windowSize.width < 768 ? 220 * scale : 280 * scale,
-          left: windowSize.width < 768 ? 40 * scale : 60 * scale,
-          rotate: "25deg",
-          fontSize: `${Math.max(14 * scale, 12)}px`
+          top: 50,
+          left: 20,
+          rotate: "15deg",
         }}
         className="badge px-3 py-1 rounded-full shadow-md cursor-grab active:cursor-grabbing"
       >
-        <span>🌞</span>
+        <span>{dayPeriod.emoji} {dayPeriod.message}</span>
       </motion.div>
 
       <motion.div
         {...dragConfig}
         style={{
           position: "absolute",
-          top: windowSize.width < 768 ? 320 * scale : 400 * scale,
-          left: windowSize.width < 768 ? 
-            Math.min(240 * scale, windowSize.width - 150) : 
-            320 * scale,
-          rotate: "-8deg",
-          fontSize: `${Math.max(14 * scale, 12)}px`
+          top: 50,
+          left: 20,
+          rotate: "15deg",
         }}
         className="badge px-3 py-1 rounded-full shadow-md cursor-grab active:cursor-grabbing"
       >
-        <span>⏳ 6 Dec • 22:27</span>
+        <span>⏳ {currentDateTime}</span>
       </motion.div>
     </aside>
   );

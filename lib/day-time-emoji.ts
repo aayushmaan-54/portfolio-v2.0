@@ -1,4 +1,4 @@
-function getCurrentDayPeriod(timezone = 'Asia/Kolkata') {
+export default function getCurrentDayPeriod(timezone = 'Asia/Kolkata') {
   const formatter = new Intl.DateTimeFormat('en-US', {
       timeZone: timezone,
       hour: 'numeric',
@@ -37,5 +37,3 @@ function getCurrentDayPeriod(timezone = 'Asia/Kolkata') {
       };
   }
 }
-
-setInterval(getCurrentDayPeriod, 60000);
