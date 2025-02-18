@@ -12,7 +12,7 @@ export default function Hero() {
         <Image
           src={memoji}
           alt="Memoji of Aayushmaan Soni"
-          className="w-[100px] md:w-[140px]"
+          className="w-[100px] md:w-[140px] pt-7"
         />
 
         <div className="badge px-4 py-1.5 md:px-5 md:py-2 rounded-full font-medium text-sm md:text-[14px] flex items-center justify-center">
@@ -23,7 +23,7 @@ export default function Hero() {
           <p className="pl-2">Available for work</p>
         </div>
 
-        <p className="font-calistoga text-2xl md:text-4xl mt-4 text-center">
+        <p className="font-calistoga text-[21px] md:text-4xl mt-4 text-center">
           Hi, I am Aayushmaan Soni {random_emoji()}
         </p>
 
