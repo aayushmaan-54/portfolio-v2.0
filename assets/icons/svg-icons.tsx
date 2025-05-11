@@ -643,7 +643,6 @@ export const Envelope = (props: React.SVGProps<SVGSVGElement>) => (
     <g clipPath="url(#clip0_39_320)">
       <path
         d="M24.7283 -0.281311H0.270902C0.121517 -0.281311 0 -0.130516 0 0.0554819V20.9516C0 21.1376 0.121517 21.2883 0.270902 21.2883H24.7283C24.8774 21.2883 25 21.1376 25 20.9516V0.0554819C25 -0.130516 24.8775 -0.281311 24.7283 -0.281311ZM20.592 2.41503L12.5 9.7753L4.40788 2.41503H20.592ZM22.826 18.5919H2.17411V3.72739L12.3392 12.973C12.4354 13.06 12.565 13.06 12.6613 12.973L22.8263 3.72739V18.5919H22.826Z"
-        fill="#FAFAFA"
       />
     </g>
     <defs>
@@ -667,21 +666,18 @@ export const Globe = (props: React.SVGProps<SVGSVGElement>) => (
   >
     <path
       d="M13.5 24.75C19.7132 24.75 24.75 19.7132 24.75 13.5C24.75 7.2868 19.7132 2.25 13.5 2.25C7.2868 2.25 2.25 7.2868 2.25 13.5C2.25 19.7132 7.2868 24.75 13.5 24.75Z"
-      stroke="black"
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M13.5 2.25C10.6113 5.28317 9 9.31133 9 13.5C9 17.6887 10.6113 21.7168 13.5 24.75C16.3887 21.7168 18 17.6887 18 13.5C18 9.31133 16.3887 5.28317 13.5 2.25Z"
-      stroke="black"
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M2 14H24.5"
-      stroke="black"
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"

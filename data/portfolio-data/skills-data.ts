@@ -55,7 +55,7 @@ const skillsData = [
   },
   {
     icon: React_JS,
-    title: "React.Js",
+    title: "React.js",
     color: "#61DAFB",
   },
   {
@@ -65,12 +65,12 @@ const skillsData = [
   },
   {
     icon: Node_JS,
-    title: "Node.Js",
+    title: "Node.js",
     color: "#8CC84B",
   },
   {
     icon: Express_JS,
-    title: "Express.Js",
+    title: "Express.js",
     color: "#6D7479",
   },
   {
@@ -80,7 +80,7 @@ const skillsData = [
   },
   {
     icon: Next_JS,
-    title: "Next.Js",
+    title: "Next.js",
     color: "#FFFFFF",
   },
   {
